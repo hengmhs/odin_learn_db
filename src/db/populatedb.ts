@@ -1,5 +1,8 @@
 import pg from "pg";
 const { Client } = pg;
+import dotenv from "dotenv";
+
+dotenv.config(); // Load environment variables from a .env file
 
 const SQL = `
 CREATE TABLE IF NOT EXISTS usernames (
