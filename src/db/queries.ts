@@ -9,4 +9,12 @@ const insertUsername = async (username: string) => {
   await pool.query("INSERT INTO usernames (username) VALUES ($1)", [username]);
 };
 
-export { getAllUserNames, insertUsername };
+const searchUsername = async (username: string) => {
+  const { rows } = await pool.query(
+    "SELECT username FROM usernames WHERE username LIKE $1",
+    [`%${username}%`]
+  );
+  return rows;
+};
+
+export { getAllUserNames, insertUsername, searchUsername };
